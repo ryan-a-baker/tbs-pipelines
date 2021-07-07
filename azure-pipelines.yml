@@ -36,4 +36,4 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'gke-dev'
     command: 'login'
-- script: kp image list
+- script: ./kp image list

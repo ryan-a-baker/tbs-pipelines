@@ -15,6 +15,7 @@ steps:
     chmod u+x pivnet
   displayName: 'Download Tanzu Network CLI'
 - script: ls
+- script: which ls
 - script: ./pivnet version
 - script: ./pivnet login --api-token $(api-token)
 - script: | 

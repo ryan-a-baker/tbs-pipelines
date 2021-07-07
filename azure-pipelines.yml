@@ -22,3 +22,12 @@ steps:
     chmod u+x kp
   displayName: 'Download kpack cli'
 - script: ./kp version
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'gke-dev'
+    namespace: 'default'
+    command: 'get'
+    arguments: 'pods'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'

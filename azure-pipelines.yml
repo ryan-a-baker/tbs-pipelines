@@ -14,3 +14,4 @@ steps:
     curl https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1
   displayName: 'Download Tanzu Network CLI'
 - script: ls
+- script: wget

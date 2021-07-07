@@ -15,4 +15,4 @@ steps:
     chmod u+x pivnet
   displayName: 'Download Tanzu Network CLI'
 - script: ls
-- scrpit: ./pivnet version
+- script: ./pivnet version

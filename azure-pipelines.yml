@@ -36,4 +36,9 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'gke-dev'
     command: 'login'
-- script: ./kp image list
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'gke-dev'
+    command: 'config'
+    arguments: 'view'

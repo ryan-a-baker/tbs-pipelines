@@ -20,6 +20,6 @@ steps:
 - script: ./pivnet login --api-token $(api-token)
 - script: | 
     ./pivnet download-product-files --product-slug='build-service' --release-version='1.2.1' --product-file-id=970671
-    mv kp-linux-0.3.0 /usr/local/bin/kp
-    chmod u+x /usr/local/bin/kp
+    mv kp-linux-0.3.0 /usr/bin/kp
+    chmod u+x /usr/bin/kp
 - script: kp version

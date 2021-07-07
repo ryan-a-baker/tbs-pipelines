@@ -17,3 +17,5 @@ steps:
 - script: ls
 - script: ./pivnet version
 - script: ./pivnet login --api-token $(api-token)
+- script: ./pivnet download-product-files --product-slug='build-service' --release-version='1.2.1' --product-file-id=970671
+- script: ls

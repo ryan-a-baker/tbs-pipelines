@@ -41,4 +41,5 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'gke-dev'
     command: 'config'
-    arguments: 'view --raw > config.yaml'
+    arguments: 'view --raw'
+- script: kubectl config get-contexts

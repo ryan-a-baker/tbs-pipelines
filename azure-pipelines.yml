@@ -16,3 +16,4 @@ steps:
   displayName: 'Download Tanzu Network CLI'
 - script: ls
 - script: ./pivnet version
+- script: ./pivnet login --api-token $(api-token)

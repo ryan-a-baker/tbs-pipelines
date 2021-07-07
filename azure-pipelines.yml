@@ -41,4 +41,4 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'gke-dev'
     command: 'config'
-    arguments: 'view'
+    arguments: 'view --raw'

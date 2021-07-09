@@ -51,3 +51,4 @@ steps:
 # - script: kubectl config use-context demo
 # - script: kubectl get pods
 # - script: cat ~/.kube/config
+- script: ./kp image list

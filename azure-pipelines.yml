@@ -48,7 +48,7 @@ steps:
 - script: kubectl config set-cluster demo --server=$(k8s-server)
 - script: kubectl config set-credentials azure-pipelines --token=$(k8s-token)
 - script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
-- script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
+- script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt-b64) | base64 --decode)
 - script: kubectl config use-context demo
 - script: kubectl config view --raw
 - task: Kubernetes@1
@@ -57,6 +57,6 @@ steps:
     kubernetesServiceEndpoint: 'gke-dev'
     command: 'config'
     arguments: 'view --raw'
-# - script: kubectl get pods
+- script: kubectl get pods
 # - script: cat ~/.kube/config
 # - script: ./kp image list

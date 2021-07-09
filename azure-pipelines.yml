@@ -31,11 +31,11 @@ steps:
     arguments: 'pods'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
-# - task: Kubernetes@1
-#   inputs:
-#     connectionType: 'Kubernetes Service Connection'
-#     kubernetesServiceEndpoint: 'gke-dev'
-#     command: 'login'
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'gke-dev'
+    command: 'login'
 # - task: Kubernetes@1
 #   inputs:
 #     connectionType: 'Kubernetes Service Connection'

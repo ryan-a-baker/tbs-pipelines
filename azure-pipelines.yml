@@ -42,4 +42,4 @@ steps:
     kubernetesServiceEndpoint: 'gke-dev'
     command: 'config'
     arguments: 'view --raw'
-- script: kubectl config get-contexts
+- script: kubectl version

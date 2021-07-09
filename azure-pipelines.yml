@@ -43,6 +43,7 @@ steps:
 #     command: 'config'
 #     arguments: 'view --raw'
 - script: kubectl version
+- script: kubectl config view --raw
 - script: kubectl get pods
 # - script: kubectl config set-cluster demo --server=$(k8s-server)
 # - script: kubectl config set-credentials azure-pipelines --token=$(k8s-token)

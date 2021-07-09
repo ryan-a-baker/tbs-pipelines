@@ -58,5 +58,4 @@ steps:
     command: 'config'
     arguments: 'view --raw'
 - script: kubectl get pods
-# - script: cat ~/.kube/config
-# - script: ./kp image list
+- script: ./kp image list

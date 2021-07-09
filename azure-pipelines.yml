@@ -50,6 +50,7 @@ steps:
 - script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
 - script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
 - script: kubectl config use-context demo
+- script: kubectl config view --raw
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'

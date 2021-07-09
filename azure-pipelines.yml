@@ -10,46 +10,46 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: |
-    curl -L https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet
-    chmod u+x pivnet
-  displayName: 'Download Tanzu Network CLI'
-- script: ./pivnet login --api-token $(api-token)
-  displayName: 'Log in to the Tanzu Network'
-- script: | 
-    ./pivnet download-product-files --product-slug='build-service' --release-version='1.2.1' --product-file-id=970671
-    mv kp-linux-0.3.0 kp
-    chmod u+x kp
-  displayName: 'Download kpack cli'
-- script: ./kp version
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'gke-dev'
-    namespace: 'default'
-    command: 'get'
-    arguments: 'pods'
-    secretType: 'dockerRegistry'
-    containerRegistryType: 'Azure Container Registry'
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'gke-dev'
-    command: 'login'
+# - script: |
+#     curl -L https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet
+#     chmod u+x pivnet
+#   displayName: 'Download Tanzu Network CLI'
+# - script: ./pivnet login --api-token $(api-token)
+#   displayName: 'Log in to the Tanzu Network'
+# - script: | 
+#     ./pivnet download-product-files --product-slug='build-service' --release-version='1.2.1' --product-file-id=970671
+#     mv kp-linux-0.3.0 kp
+#     chmod u+x kp
+#   displayName: 'Download kpack cli'
+# - script: ./kp version
 # - task: Kubernetes@1
 #   inputs:
 #     connectionType: 'Kubernetes Service Connection'
 #     kubernetesServiceEndpoint: 'gke-dev'
-#     command: 'config'
-#     arguments: 'view --raw'
-- script: kubectl version
-- script: kubectl config view --raw
-- script: kubectl get pods
-# - script: kubectl config set-cluster demo --server=$(k8s-server)
-# - script: kubectl config set-credentials azure-pipelines --token=$(k8s-token)
-# - script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
-# - script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
-# - script: kubectl config use-context demo
+#     namespace: 'default'
+#     command: 'get'
+#     arguments: 'pods'
+#     secretType: 'dockerRegistry'
+#     containerRegistryType: 'Azure Container Registry'
+# - task: Kubernetes@1
+#   inputs:
+#     connectionType: 'Kubernetes Service Connection'
+#     kubernetesServiceEndpoint: 'gke-dev'
+#     command: 'login'
+# # - task: Kubernetes@1
+# #   inputs:
+# #     connectionType: 'Kubernetes Service Connection'
+# #     kubernetesServiceEndpoint: 'gke-dev'
+# #     command: 'config'
+# #     arguments: 'view --raw'
+# - script: kubectl version
+# - script: kubectl config view --raw
 # - script: kubectl get pods
+- script: kubectl config set-cluster demo --server=$(k8s-server)
+- script: kubectl config set-credentials azure-pipelines --token=$(k8s-token)
+- script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
+- script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
+- script: kubectl config use-context demo
+- script: kubectl get pods
 # - script: cat ~/.kube/config
 - script: ./kp image list

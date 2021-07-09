@@ -43,9 +43,11 @@ steps:
     command: 'config'
     arguments: 'view --raw'
 - script: kubectl version
+- script: kubectl get pods
 - script: kubectl config set-cluster demo --server=$(k8s-server)
 - script: kubectl config set-credentials azure-pipelines --token=$(k8s-token)
 - script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
 - script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
 - script: kubectl config use-context demo
+- script: kubectl get pods
 - script: cat ~/.kube/config

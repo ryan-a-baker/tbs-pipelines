@@ -31,23 +31,23 @@ steps:
     arguments: 'pods'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'gke-dev'
-    command: 'login'
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'gke-dev'
-    command: 'config'
-    arguments: 'view --raw'
+# - task: Kubernetes@1
+#   inputs:
+#     connectionType: 'Kubernetes Service Connection'
+#     kubernetesServiceEndpoint: 'gke-dev'
+#     command: 'login'
+# - task: Kubernetes@1
+#   inputs:
+#     connectionType: 'Kubernetes Service Connection'
+#     kubernetesServiceEndpoint: 'gke-dev'
+#     command: 'config'
+#     arguments: 'view --raw'
 - script: kubectl version
 - script: kubectl get pods
-- script: kubectl config set-cluster demo --server=$(k8s-server)
-- script: kubectl config set-credentials azure-pipelines --token=$(k8s-token)
-- script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
-- script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
-- script: kubectl config use-context demo
-- script: kubectl get pods
-- script: cat ~/.kube/config
+# - script: kubectl config set-cluster demo --server=$(k8s-server)
+# - script: kubectl config set-credentials azure-pipelines --token=$(k8s-token)
+# - script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
+# - script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
+# - script: kubectl config use-context demo
+# - script: kubectl get pods
+# - script: cat ~/.kube/config

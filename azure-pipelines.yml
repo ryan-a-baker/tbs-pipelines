@@ -50,6 +50,12 @@ steps:
 - script: kubectl config set-context demo --user=azure-pipelines --cluster=demo
 - script: kubectl config set-cluster demo --embed-certs --certificate-authority <(echo $(k8s-ca-crt))
 - script: kubectl config use-context demo
-- script: kubectl get pods
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'gke-dev'
+    command: 'config'
+    arguments: 'view --raw'
+# - script: kubectl get pods
 # - script: cat ~/.kube/config
-- script: ./kp image list
+# - script: ./kp image list
